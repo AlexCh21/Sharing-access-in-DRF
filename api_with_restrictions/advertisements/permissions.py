@@ -6,7 +6,7 @@ class IsOwnerOrViewOnly(BasePermission):
 
         if request.method in SAFE_METHODS:
             return True
-        return obj.creator == request.user
+        return request.user == obj.user
 
 class IsAdminUserOrReadOnly(BasePermission):
     def has_object_permission(self, request, view, obj):
