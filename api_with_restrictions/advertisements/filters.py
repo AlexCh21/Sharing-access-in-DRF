@@ -1,15 +1,15 @@
-from django_filters import rest_framework as filters
-from django_filters import FilterSet
+from django_filters import rest_framework as filters, DateFromToRangeFilter
 
 from .models import Advertisement
 
 
-class AdvertisementFilter(FilterSet):
+class AdvertisementFilter(filters.FilterSet):
     """Фильтры для объявлений."""
 
-    created_at = filters.DateFromToRangeFilter()
-    update_at = filters.DateFromToRangeFilter()
+    created_at = DateFromToRangeFilter()
+    updated_at = DateFromToRangeFilter()
+    
 
     class Meta:
         model = Advertisement
-        fields = ['created_at', 'creator', 'status']
+        fields = ['created_at', 'updated_at', 'status']
